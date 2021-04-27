@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='result'>RESULT:</div>
+    <button id='btn1'>btn1 window.event===event</button>
+    <hr>
+    <button id='btn2'>btn2 window.event=undefined</button>
+    <hr>
+    <div>step1：click <strong>window.event===event</strong> btn1 button</div>
+    <div>step2：click <strong>window.event=undefined</strong> btn2 button</div>
+    <div>step3：click <strong>window.event===event</strong> btn3 button</div>
+    <hr>
+    code：
+    <p>        
+        <code style='white-space: pre'>
+            let result = document.getElementById('result');
+            let btn1 = document.getElementById('btn1');
+                btn1.addEventListener('click', function (e) {
+                result.innerHTML = 'RESULT:' + (window.event === e);
+                console.log(window.event === e)
+            }, false);
+            let btn2 = document.getElementById('btn2');
+                btn2.addEventListener('click', function () {
+                window.event = undefined;
+            }, false)
+        </code>
+    </p>    
+    why？
+    <script>
+        let result = document.getElementById('result');
+        let btn1 = document.getElementById('btn1');
+        btn1.addEventListener('click', function (e) {
+            result.innerHTML = 'RESULT:' + (window.event === e);
+            console.log(window.event === e)
+        }, false);
+        let btn2 = document.getElementById('btn2');
+        btn2.addEventListener('click', function () {
+            window.event = undefined;
+        }, false)
+    </script>
+</body>
+
+</html>
